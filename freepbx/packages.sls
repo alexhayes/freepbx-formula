@@ -70,10 +70,6 @@ autoconf:
   pkg:
     - installed
 
-git:
-  pkg:
-    - installed
-
 subversion:
   pkg:
     - installed

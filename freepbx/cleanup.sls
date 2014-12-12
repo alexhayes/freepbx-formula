@@ -22,7 +22,7 @@
     - repl: |
         upload_max_filesize = 120M
 
-apache-user:
+change-apache-user:
   file.replace:
     - name: /etc/apache2/envvars
     - pattern: |
@@ -30,7 +30,7 @@ apache-user:
     - repl: |
         export APACHE_RUN_USER={{ salt['pillar.get']('asterisk:user', 'asterisk') }}
       
-apache-group:
+change-apache-group:
   file.replace:
     - name: /etc/apache2/envvars
     - pattern: |
@@ -38,7 +38,7 @@ apache-group:
     - repl: |
         export APACHE_RUN_GROUP={{ salt['pillar.get']('asterisk:group', 'asterisk') }}
 
-apache-restart:
+cleanup-apache-restart:
   module.run:
     - name: service.restart
     - m_name: {{ apache.service }}

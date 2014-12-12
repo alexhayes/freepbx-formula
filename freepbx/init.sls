@@ -3,7 +3,7 @@ include:
   - git
   - mysql
   - mysql.dev
-  - postgresql    
+  - postgres
   - apache
   - users
   - php
