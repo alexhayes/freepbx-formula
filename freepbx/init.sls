@@ -1,0 +1,24 @@
+include:
+  - freepbx.packages
+  - git
+  - mysql
+  - mysql.dev
+  - postgresql    
+  - apache
+  - users
+  - php
+  - php.cli
+  - php.curl
+  - php.mysql
+  - php.pear
+  - php.gd
+  - freepbx.pear
+  - freepbx.iksemel
+  - freepbx.dahdi
+  - freepbx.libpri
+  - freepbx.pjproject
+  - freepbx.jansson
+  - freepbx.asterisk
+  - freepbx.asterisk-extra-sounds
+  - freepbx.cleanup
+  - freepbx.freepbx

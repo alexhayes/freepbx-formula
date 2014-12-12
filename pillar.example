@@ -1,0 +1,57 @@
+users:
+  asterisk:
+    fullname: Asterisk User
+    
+mysql:
+  # Manage databases
+  database:
+    - asterisk
+    - asteriskcdrdb
+
+  # Manage users
+  # you can get pillar for existent server using import_users.py script
+  user:
+    asteriskuser:
+      user: asteriskuser
+      password: 's3cr3t'
+      host: localhost
+      databases:
+        - database: asterisk
+          grants: ['all privileges']
+        - database: asteriskcdrdb
+          grants: ['all privileges']
+
+asterisk:
+  version: 12.7.2
+  hash: 3bd6c62bcc646cdb28669bd200b69134eb08b240
+  user: asterisk
+  group: asterisk
+  modules:
+  	- format_mp3
+  	- cdr_mysql
+  	- app_mysql
+  	- res_config_mysql
+
+freepbx:
+  version: 12.0.9
+
+pear-db:
+  version: 1.7.14
+
+iksemel:
+  version: 1.4
+  hash: sha1=722910b99ce794fd3f6f0e5f33fa804732cf46db
+
+dahdi:
+  version: 2.10.0.1+2.10.0.1
+  hash: a7fc17c20243a8b84824cca25ebad25f46b10031
+
+libpri:
+  version: 1.4.15
+  hash: d1877f9d772eecb4aba2bcb9d03478d88aac163c
+
+pjproject:
+  version: master
+  
+jansson:
+  version: master
