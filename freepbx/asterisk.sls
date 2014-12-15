@@ -3,7 +3,7 @@ asterisk-get:
     - extracted
     - name: /usr/src/
     - source: http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-{{ salt['pillar.get']('asterisk:version', '12.7.2') }}.tar.gz
-    - source_hash: {{ salt['pillar.get']('asterisk:hash', '3bd6c62bcc646cdb28669bd200b69134eb08b240') }}
+    - source_hash: {{ salt['pillar.get']('asterisk:hash', 'sha1:3bd6c62bcc646cdb28669bd200b69134eb08b240') }}
     - archive_format: tar
     - tar_options: xz
     - if_missing: /usr/src/asterisk-{{ salt['pillar.get']('asterisk:version', '12.7.2') }}/
