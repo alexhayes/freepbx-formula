@@ -8,7 +8,7 @@ asterisk-extra-sounds-get:
     - tar_options: xz
     - if_missing: /var/lib/asterisk/sounds
     - require:
-      - cmd: asterisk-install
+      - sls: freepbx.asterisk
 
 asterisk-extra-sounds-g722-get:
   archive:
@@ -20,4 +20,4 @@ asterisk-extra-sounds-g722-get:
     - tar_options: xz
     - if_missing: /var/lib/asterisk/sounds
     - require:
-      - cmd: asterisk-install
+      - sls: freepbx.asterisk

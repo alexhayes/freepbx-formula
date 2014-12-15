@@ -7,6 +7,8 @@ asterisk-get:
     - archive_format: tar
     - tar_options: xz
     - if_missing: /usr/src/asterisk-{{ salt['pillar.get']('asterisk:version', '12.7.2') }}/
+    - require:
+      - sls: freepbx.jansson
 
 asterisk-install:
   cmd.run:
