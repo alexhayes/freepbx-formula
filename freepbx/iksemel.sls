@@ -7,8 +7,8 @@ iksemel-get:
     - archive_format: tar
     - tar_options: zx
     - if_missing: /usr/src/iksemel-{{ salt['pillar.get']('iksemel:version', '1.4') }}/
-    - require:
-      - sls: freepbx.pear
+#    - require:
+#      - sls: freepbx.pear.install-pear
 
 iksemel-install:
   cmd.run:

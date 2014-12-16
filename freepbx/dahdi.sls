@@ -7,8 +7,8 @@ dahdi-get:
     - archive_format: tar
     - tar_options: xz
     - if_missing: /usr/src/dahdi-linux-complete-{{ salt['pillar.get']('dahdi:version', '2.10.0.1+2.10.0.1') }}/
-    - require:
-      - sls: freepbx.iksemel
+#    - require:
+#      - sls: freepbx.iksemel
 
 dahdi-install:
   cmd.run:

@@ -7,8 +7,8 @@ libpri-get:
     - archive_format: tar
     - tar_options: xz
     - if_missing: /usr/src/libpri-{{ salt['pillar.get']('libpri:version', '1.4.15') }}/
-    - require:
-      - sls: freepbx.dahdi
+#    - require:
+#      - sls: freepbx.dahdi
 
 libpri-install:
   cmd.run:

@@ -3,8 +3,8 @@ freepbx-get:
     - name: http://git.freepbx.org/scm/freepbx/framework.git
     - target: /usr/src/freepbx
     - rev: {{ salt['pillar.get']('freepbx:version', 'release/12.0.9') }}
-    - require:
-      - sls: freepbx.cleanup
+#    - require:
+#      - sls: freepbx.cleanup
 
 freepbx-install:
   cmd.run:
@@ -17,7 +17,7 @@ freepbx-install:
         amportal a reload
         amportal chown
         ln -s /var/lib/asterisk/moh /var/lib/asterisk/mohmp3
-        amportal start
+        amportal restart
     - cwd: /usr/src/freepbx
     - shell: /bin/bash
     - timeout: 300
