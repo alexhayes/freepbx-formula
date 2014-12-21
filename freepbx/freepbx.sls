@@ -9,8 +9,8 @@ freepbx-get:
 freepbx-install:
   cmd.run:
     - name: |
-        ./start_asterisk start
-        ./install_amp --installdb --username={{ salt['pillar.get']('mysql:user:asterisk:user', 'asteriskuser') }} --password={{ salt['pillar.get']('mysql:user:asterisk:password', 's3cr3t') }}
+        ./start_asterisk restart
+        ./install_amp --installdb --username={{ salt['pillar.get']('mysql:user:asterisk:user', 'asterisk') }} --password={{ salt['pillar.get']('mysql:user:asterisk:password', 's3cr3t') }}
         amportal a ma download manager
         amportal a ma install manager
         amportal a ma installall
@@ -20,6 +20,6 @@ freepbx-install:
         amportal restart
     - cwd: /usr/src/freepbx
     - shell: /bin/bash
-    - timeout: 300
+    - timeout: 600
     - require:
       - git: freepbx-get
