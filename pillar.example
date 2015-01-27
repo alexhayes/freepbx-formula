@@ -1,7 +1,4 @@
-users:
-  asterisk:
-    fullname: Asterisk User
-    
+# If you're using MySQL
 mysql:
   # Manage databases
   database:
@@ -11,7 +8,7 @@ mysql:
   # Manage users
   # you can get pillar for existent server using import_users.py script
   user:
-    asteriskuser:
+    asterisk:
       user: asteriskuser
       password: 's3cr3t'
       host: localhost
