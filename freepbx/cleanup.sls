@@ -9,11 +9,15 @@
     - recurse:
       - user
       - group
+#    - require:
+#      - sls: freepbx.asterisk
 {% endfor %}
 
 /var/www/html:
   file:
     - absent
+#    - require:
+#      - sls: freepbx.asterisk
 
 /etc/php5/apache2/php.ini:
   file.replace:
@@ -21,6 +25,8 @@
         upload_max_filesize = .*
     - repl: |
         upload_max_filesize = 120M
+#    - require:
+#      - sls: freepbx.asterisk
 
 change-apache-user:
   file.replace:
@@ -29,6 +35,8 @@ change-apache-user:
         export APACHE_RUN_USER=.+
     - repl: |
         export APACHE_RUN_USER={{ salt['pillar.get']('asterisk:user', 'asterisk') }}
+#    - require:
+#      - sls: freepbx.asterisk
       
 change-apache-group:
   file.replace:
@@ -37,8 +45,30 @@ change-apache-group:
         export APACHE_RUN_GROUP=.+
     - repl: |
         export APACHE_RUN_GROUP={{ salt['pillar.get']('asterisk:group', 'asterisk') }}
+#    - require:
+#      - sls: freepbx.asterisk
 
 cleanup-apache-restart:
   module.run:
     - name: service.restart
     - m_name: {{ apache.service }}
+#    - require:
+#      - sls: freepbx.asterisk
+
+allow-htaccess:
+  file.replace:
+    - name: /etc/apache2/apache2.conf
+    - pattern: |
+        <Directory /var/www/>
+                Options Indexes FollowSymLinks
+                AllowOverride None
+                Require all granted
+        </Directory>
+    - repl: |
+        <Directory /var/www/>
+                Options Indexes FollowSymLinks
+                AllowOverride All
+                Require all granted
+        </Directory>
+#    - require:
+#      - sls: freepbx.asterisk

@@ -3,6 +3,8 @@ jansson-get:
     - name: https://github.com/akheron/jansson.git
     - target: /usr/src/jansson
     - rev: {{ salt['pillar.get']('jansson:version', 'master') }}
+#    - require:
+#      - sls: freepbx.pjproject
 
 jansson-install:
   cmd.run:

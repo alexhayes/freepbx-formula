@@ -1,12 +1,20 @@
+asterisk-dir:
+  file.directory:
+    - name: /usr/src/asterisk-{{ salt['pillar.get']('asterisk:version', '12-current') }}
+#    - require:
+#      - sls: freepbx.jansson
+
 asterisk-get:
   archive:
     - extracted
-    - name: /usr/src/
-    - source: http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-{{ salt['pillar.get']('asterisk:version', '12.7.2') }}.tar.gz
-    - source_hash: {{ salt['pillar.get']('asterisk:hash', 'sha1=3bd6c62bcc646cdb28669bd200b69134eb08b240') }}
+    - name: /usr/src/asterisk-{{ salt['pillar.get']('asterisk:version', '12-current') }}/
+    - source: http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-{{ salt['pillar.get']('asterisk:version', '12-current') }}.tar.gz
+    - source_hash: http://downloads.asterisk.org/pub/telephony/asterisk/asterisk-12-current.sha1
     - archive_format: tar
-    - tar_options: xz
-    - if_missing: /usr/src/asterisk-{{ salt['pillar.get']('asterisk:version', '12.7.2') }}/
+    - tar_options: xz --strip-components=1
+    - if_missing: /usr/src/asterisk-{{ salt['pillar.get']('asterisk:version', '12-current') }}/Makefile
+    - require:
+      - file: asterisk-dir
 
 asterisk-install:
   cmd.run:
@@ -24,8 +32,8 @@ asterisk-install:
         make config
         ldconfig
         make progdocs
-    - cwd: /usr/src/asterisk-{{ salt['pillar.get']('asterisk:version', '12.7.2') }}/
+    - cwd: /usr/src/asterisk-{{ salt['pillar.get']('asterisk:version', '12-current') }}/
     - shell: /bin/bash
-    - timeout: 300
+    - timeout: 1200
     - require:
       - archive: asterisk-get

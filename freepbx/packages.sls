@@ -121,3 +121,7 @@ libspandsp-dev:
 doxygen:
   pkg:
     - installed
+
+libgmime-2.6-dev:
+  pkg:
+    - installed

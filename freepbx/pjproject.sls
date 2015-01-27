@@ -3,6 +3,8 @@ pjproject-get:
     - name: https://github.com/asterisk/pjproject.git
     - target: /usr/src/pjproject
     - rev: {{ salt['pillar.get']('pjproject:version', 'master') }}
+#    - require:
+#      - sls: freepbx.libpri
 
 pjproject-install:
   cmd.run:
