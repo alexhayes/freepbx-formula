@@ -54,3 +54,21 @@ cleanup-apache-restart:
     - m_name: {{ apache.service }}
 #    - require:
 #      - sls: freepbx.asterisk
+
+allow-htaccess:
+  file.replace:
+    - name: /etc/apache2/apache2.conf
+    - pattern: |
+        <Directory /var/www/>
+                Options Indexes FollowSymLinks
+                AllowOverride None
+                Require all granted
+        </Directory>
+    - repl: |
+        <Directory /var/www/>
+                Options Indexes FollowSymLinks
+                AllowOverride All
+                Require all granted
+        </Directory>
+#    - require:
+#      - sls: freepbx.asterisk
