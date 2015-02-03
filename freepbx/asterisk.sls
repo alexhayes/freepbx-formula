@@ -34,6 +34,6 @@ asterisk-install:
         make progdocs
     - cwd: /usr/src/asterisk-{{ salt['pillar.get']('asterisk:version', '12-current') }}/
     - shell: /bin/bash
-    - timeout: 1200
+    - timeout: 1800
     - require:
       - archive: asterisk-get

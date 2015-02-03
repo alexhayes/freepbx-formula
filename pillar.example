@@ -18,6 +18,16 @@ mysql:
         - database: asteriskcdrdb
           grants: ['all privileges']
 
+apache:
+  sites:
+    000-default:
+      template_file: salt://apache/vhosts/standard.tmpl
+      DocumentRoot: /var/www/html
+
+      Directory:
+        /var/www/html:
+          AllowOverride: All
+
 asterisk:
   version: 12.7.2
   hash: 3bd6c62bcc646cdb28669bd200b69134eb08b240
