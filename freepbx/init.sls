@@ -1,7 +1,6 @@
 include:
   - .requirements
-  - apache
-  - apache.vhosts.standard
+  - apache.debian_full
   - .pear
   - .iksemel
   - .dahdi

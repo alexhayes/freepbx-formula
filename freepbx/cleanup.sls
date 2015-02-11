@@ -13,9 +13,9 @@
 #      - sls: freepbx.asterisk
 {% endfor %}
 
-#/var/www/html:
-#  file:
-#    - absent
+/var/www/html/index.html:
+  file:
+    - absent
 #    - require:
 #      - sls: freepbx.asterisk
 
